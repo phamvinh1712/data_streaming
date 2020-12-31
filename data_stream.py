@@ -100,6 +100,9 @@ if __name__ == "__main__":
         .master("local[*]") \
         .appName("KafkaSparkStructuredStreaming") \
         .config("spark.ui.port", 3000) \
+        .config("spark.sql.shuffle.partitions", 2) \
+        .config("spark.streaming.kafka.maxRatePerPartition", 10) \
+        .config("spark.default.parallelism", 100) \
         .getOrCreate()
 
     logger.info("Spark started")
